@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="com.polyvi.xface.extension.push"
+    version="1.0.0">
+    <name>PushNotification</name>
+    <description>xFace PushNotification Extension</description>
+    <license>GPL v3</license>
+    <keywords>cordova,xface,push</keywords>
+
+    <js-module src="www/PushNotification.js" name="PushNotification">
+        <clobbers target="xFace.PushNotification" />
+    </js-module>
+
+	 <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="PushNotification">
+                <param name="android-package" value="com.polyvi.xface.extension.push.XPushNotificationExt"/>
+            </feature>
+        </config-file>
+        <source-file src="src/android/XPushNotificationExt.java" target-dir="src/com/polyvi/xface/extension/push" />
+		<source-file src="src/android/XServiceManager.java" target-dir="src/com/polyvi/xface/extension/push" />
+		<source-file src="src/android/XNotificationService.java" target-dir="src/com/polyvi/xface/extension/push" />
+		<source-file src="src/android/XConnectionManager.java" target-dir="src/com/polyvi/xface/extension/push" />
+     </platform>
+</plugin>
