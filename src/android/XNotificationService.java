@@ -50,7 +50,6 @@ import android.os.IBinder;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 
-import com.polyvi.xface.R;
 import com.polyvi.xface.event.XEvent;
 import com.polyvi.xface.event.XEventType;
 import com.polyvi.xface.event.XSystemEventCenter;
@@ -388,7 +387,6 @@ public class XNotificationService extends Service {
 
         Notification notification = new Notification();
         // 设置通知的各种属性
-        notification.icon = R.drawable.xface_logo;
         notification.defaults = Notification.DEFAULT_LIGHTS;
         notification.defaults |= Notification.DEFAULT_SOUND;
         notification.defaults |= Notification.DEFAULT_VIBRATE;
