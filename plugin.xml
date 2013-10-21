@@ -18,9 +18,11 @@
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="PushNotification">
                 <param name="android-package" value="com.polyvi.xface.extension.push.XPushNotificationExt"/>
+				<param name="onload" value="true"/>
             </feature>
         </config-file>
 		<source-file src="src/android/libs/asmack.jar" target-dir="libs/" />
+		<source-file src="src/android/res/raw/push.properties" target-dir="res/raw/" />
         <source-file src="src/android/XPushNotificationExt.java" target-dir="src/com/polyvi/xface/extension/push" />
 		<source-file src="src/android/XServiceManager.java" target-dir="src/com/polyvi/xface/extension/push" />
 		<source-file src="src/android/XNotificationService.java" target-dir="src/com/polyvi/xface/extension/push" />
