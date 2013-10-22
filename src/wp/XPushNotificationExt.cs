@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.IO.IsolatedStorage;
 using xFaceLib.runtime;
 using xFaceLib.Util;
@@ -8,22 +9,33 @@ namespace WPCordovaClassLib.Cordova.Commands
 {
     public class PushNotification : XBaseCommand
     {
+        public PushNotification()
+        {
+            XPushNotificationHelper push = XPushNotificationHelper.GetInstance();
+        }
+
+        private string callbackId = string.Empty;
 
         /// <summary>
-        /// 获取手机设备的唯一标识(以UUID作为唯一标识)
+        /// 获取手机设备的唯一标识(以UUID作为唯一标识) WP8是pushChannelUri
         /// </summary>
         public void getDeviceToken(string options)
         {
+            callbackId = JSON.JsonHelper.Deserialize<string[]>(options)[0];
             string pushChannelUri = string.Empty;
             if (IsolatedStorageSettings.ApplicationSettings.Contains(XConstant.PUSH_NOTIFICATION_URI))
             {
                 pushChannelUri = (string)IsolatedStorageSettings.ApplicationSettings[XConstant.PUSH_NOTIFICATION_URI];
                 DispatchCommandResult(new PluginResult(PluginResult.Status.OK, pushChannelUri));
+                return;
             }
-            else
-            {
-                DispatchCommandResult(new PluginResult(PluginResult.Status.ERROR, "can't get pushChannelUri"));
-            }
+
+            XPushNotificationHelper.OnPushChannelUriUpdated += XPushNotificationHelper_OnPushChannelUriUpdated;
+        }
+
+        private void XPushNotificationHelper_OnPushChannelUriUpdated(object sender, string pushChannelUri)
+        {
+            DispatchCommandResult(new PluginResult(PluginResult.Status.OK, pushChannelUri), callbackId);
         }
 
         /// <summary>
@@ -43,7 +55,7 @@ namespace WPCordovaClassLib.Cordova.Commands
         {
             Deployment.Current.Dispatcher.BeginInvoke(() =>
             {
-                //替掉行符"\n"为"\\n",否则会引起js语句异常
+                //替掉行符"\n"为"\\n",否则会引起js语句异常 
                 notification = notification.Replace("\n", "\\n");
                 string jsString = string.Format("cordova.require('com.polyvi.xface.extension.push.PushNotification').fire('{0}');", notification);
                 // Fire notification to js
@@ -59,6 +71,7 @@ namespace WPCordovaClassLib.Cordova.Commands
         //处理OnReset 移除push监听
         public override void OnReset()
         {
+            XPushNotificationHelper.OnPushChannelUriUpdated -= XPushNotificationHelper_OnPushChannelUriUpdated;
             XPushNotificationHelper.PushNotificationEventHandler -= XPushNotificationHelper_PushNotificationEventHandler;
         }
     }
