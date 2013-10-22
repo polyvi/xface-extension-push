@@ -28,4 +28,14 @@
 		<source-file src="src/android/XNotificationService.java" target-dir="src/com/polyvi/xface/extension/push" />
 		<source-file src="src/android/XConnectionManager.java" target-dir="src/com/polyvi/xface/extension/push" />
      </platform>
+    <!-- wp8 -->
+    <platform name="wp8">
+        <config-file target="config.xml" parent="/*">
+            <feature name="PushNotification">
+                <param name="wp-package" value="PushNotification"/>
+            </feature>
+        </config-file>
+
+        <source-file src="src/wp/XPushNotificationExt.cs" />
+    </platform>
 </plugin>
