@@ -43,4 +43,27 @@
         <source-file src="src/wp/XPushNotificationExt.cs" />
         <source-file src="src/wp/XPushNotificationHelper.cs" />
     </platform>
+    <!-- ios -->
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="PushNotification">
+                <param name="ios-package" value="XPushNotificationExt" />
+            </feature>
+        </config-file>
+        <header-file src="src/ios/XPushRuntime.h" />
+        <source-file src="src/ios/XPushRuntime.m" />
+        <header-file src="src/ios/XPushNotificationExt.h" />
+        <source-file src="src/ios/XPushNotificationExt.m" />
+        <header-file src="src/ios/lib/APService.h" />
+        <resource-file src="src/ios/PushConfig.plist" />
+
+        <framework src="SystemConfiguration.framework" />
+        <framework src="CFNetwork.framework" />
+        <framework src="CoreTelephony.framework" />
+        <framework src="CoreFoundation.framework" />
+        <framework src="CFNetwork.framework" />
+        <framework src="CoreGraphics.framework" />
+        <framework src="UIKit.framework" />
+        <source-file framework="true" src="src/ios/lib/libPushSDK.a" />
+    </platform>
 </plugin>
