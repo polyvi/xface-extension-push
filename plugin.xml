@@ -43,4 +43,36 @@
         <source-file src="src/wp/XPushNotificationExt.cs" />
         <source-file src="src/wp/XPushNotificationHelper.cs" />
     </platform>
+    <!-- ios -->
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="PushNotification">
+                <param name="ios-package" value="XPushNotificationExt" />
+            </feature>
+        </config-file>
+        <header-file src="src/ios/XPushRuntime.h" />
+        <source-file src="src/ios/XPushRuntime.m" />
+        <header-file src="src/ios/XPushNotificationExt.h" />
+        <source-file src="src/ios/XPushNotificationExt.m" />
+        <header-file src="src/ios/lib/BPush.h" />
+        <header-file src="src/ios/lib/opensource/Base64.h" />
+        <source-file src="src/ios/lib/opensource/Base64.m" compiler-flags="-fno-objc-arc"/>
+        <header-file src="src/ios/lib/opensource/Base64Defines.h" />
+        <header-file src="src/ios/lib/opensource/GzipCompressor.h" />
+        <source-file src="src/ios/lib/opensource/GzipCompressor.m" compiler-flags="-fno-objc-arc"/>
+        <header-file src="src/ios/lib/opensource/JSONKit.h" />
+        <source-file src="src/ios/lib/opensource/JSONKit.m" compiler-flags="-fno-objc-arc"/>
+        <header-file src="src/ios/lib/opensource/OpenUDID.h" />
+        <source-file src="src/ios/lib/opensource/OpenUDID.m" compiler-flags="-fno-objc-arc"/>
+        <header-file src="src/ios/lib/opensource/Reachability.h" />
+        <source-file src="src/ios/lib/opensource/Reachability.m" compiler-flags="-fno-objc-arc"/>
+        <resource-file src="src/ios/BPushConfig.plist" />
+
+        <framework src="SystemConfiguration.framework" />
+        <framework src="CFNetwork.framework" />
+        <framework src="CoreTelephony.framework" />
+        <framework src="CFNetwork.framework" />
+        <framework src="libz.dylib" />
+        <source-file framework="true" src="src/ios/lib/libBPush.a" />
+    </platform>
 </plugin>
