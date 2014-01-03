@@ -27,10 +27,11 @@
 
 #import "XPushNotificationExt.h"
 #import <XFace/XUtils.h>
-#import <XFace/XConstants.h>
 
 #import <Cordova/CDVInvokedUrlCommand.h>
 #import <Cordova/CDVPluginResult.h>
+
+#define XFACE_DATA_KEY_DEVICETOKEN               @"deviceToken"
 
 @implementation XPushNotificationExt
 
