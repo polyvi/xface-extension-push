@@ -23,9 +23,10 @@
 #import "XPushNotificationExt.h"
 #import <objc/runtime.h>
 #import <XFace/XUtils.h>
-#import <XFace/XConstants.h>
 #import <XFace/NSObject+JSONSerialization.h>
 #import "APService.h"
+
+#define XFACE_DATA_KEY_DEVICETOKEN               @"deviceToken"
 
 @implementation AppDelegate(Pushwoosh)
 
