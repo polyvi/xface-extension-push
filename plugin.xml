@@ -6,7 +6,7 @@
     version="1.0.0">
     <name>PushNotification</name>
     <description>xFace PushNotification Extension</description>
-    <license>GPL v3</license>
+    <license>GPLv3</license>
     <keywords>cordova,xface,push</keywords>
 
     <js-module src="www/PushNotification.js" name="PushNotification">
