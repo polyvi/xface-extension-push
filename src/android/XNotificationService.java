@@ -50,6 +50,7 @@ import android.os.IBinder;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 
+import com.polyvi.xface.XFaceMainActivity;
 import com.polyvi.xface.event.XEvent;
 import com.polyvi.xface.event.XEventType;
 import com.polyvi.xface.event.XSystemEventCenter;
@@ -208,7 +209,6 @@ public class XNotificationService extends Service {
                         } else {
                             XEvent evt = XEvent.createEvent(
                                     XEventType.PUSH_MSG_RECEIVED, notificationMessage);
-                            XSystemEventCenter.getInstance().sendEventAsync(evt);
                         }
                     } else if (ACTION_NOTIFICATION_CLEARED.endsWith(action)) {
                         // TODO 用户点击清除通知
