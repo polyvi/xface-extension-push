@@ -27,3 +27,9 @@
 ### 1.0.1 Mon Jan 27 2014 15:56:53 GMT+0800 (CST)
  *  batch modify .reviewboard
  *  Incremented plugin version on dev branch to 1.0.1-dev
+
+## 1.0.2 (Fri Apr 04 2014)
+
+
+ *  Delete the send Event
+ *  Incremented plugin version on dev branch to 1.0.2-dev
